@@ -1,0 +1,253 @@
+:root {
+  --primary-color: #4a90e2;
+  --secondary-color: #f5f5f5;
+  --text-color: #333;
+  --border-color: #ddd;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.4;
+  color: var(--text-color);
+  background-color: var(--secondary-color);
+  margin: 0;
+  padding: 10px;
+  width: 350px;
+  max-height: 600px;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.container {
+  width: 100%;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+h1 {
+  font-size: 1.2rem;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: var(--primary-color);
+}
+
+h2 {
+  font-size: 1rem;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  color: var(--primary-color);
+}
+
+.nickname-input, .keyword-inputs {
+  margin-bottom: 10px;
+}
+
+.nickname-input {
+  display: flex;
+}
+
+.nickname-input input {
+  flex-grow: 1;
+  margin-right: 5px;
+}
+
+.nickname-list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 10px;
+  max-height: 120px;
+  overflow-y: auto;
+}
+
+.nickname-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: var(--secondary-color);
+  margin-bottom: 3px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.toggle {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.toggle input {
+  display: none;
+}
+
+.slider {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 20px;
+  margin-right: 8px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+input:checked + .slider {
+  background-color: var(--success-color);
+}
+
+input:checked + .slider:before {
+  transform: translateX(20px);
+}
+
+.keyword-group {
+  margin-bottom: 8px;
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 3px;
+}
+
+.tag {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 2px 6px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  border-radius: 3px;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8rem;
+}
+
+.tag .remove {
+  margin-left: 3px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.settings-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.save-settings, .load-settings {
+  display: flex;
+  gap: 5px;
+}
+
+button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 6px;
+  border: 1px solid var(--border-color);
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.toast {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  display: none;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #61a0ff;
+    --secondary-color: #2c2c2c;
+    --text-color: #f5f5f5;
+    --border-color: #555;
+  }
+
+  body {
+    background-color: #1a1a1a;
+  }
+
+  .container {
+    background-color: #333;
+  }
+
+  .nickname-list li {
+    background-color: #444;
+  }
+
+  .slider {
+    background-color: #666;
+  }
+
+  input:checked + .slider {
+    background-color: var(--success-color);
+  }
+
+  button {
+    background-color: var(--primary-color);
+  }
+}
+
+/* Responsive design */
+@media screen and (max-width: 400px) {
+  body {
+    padding: 5px;
+  }
+
+  .container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1rem;
+  }
+
+  h2 {
+    font-size: 0.9rem;
+  }
+
+  .nickname-list {
+    max-height: 100px;
+  }
+
+  button {
+    padding: 4px 8px;
+    font-size: 0.8rem;
+  }
+
+  input[type="text"], select {
+    padding: 4px;
+    font-size: 0.8rem;
+  }
+}

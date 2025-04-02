@@ -1,18 +1,30 @@
 {
   "manifest_version": 3,
-  "name": "Allowed Nicknames Filter",
-  "version": "1.0",
-  "description": "페이지에서 허용된 닉네임을 기준으로 요소를 필터링합니다.",
-  "permissions": ["storage"],
+  "name": "VOD 필터",
+  "version": "1.2",
+  "description": "페이지에서 허용된 닉네임과 키워드를 기준으로 VOD를 필터링합니다.",
+  "permissions": ["storage", "activeTab", "tabs"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
   "content_scripts": [
     {
-      "matches": ["<all_urls>"],
+      "matches": [
+        "https://www.sooplive.co.kr/directory/category/*/vod"
+      ],
       "js": ["content.js"],
       "run_at": "document_end"
     }
   ],
   "action": {
     "default_popup": "popup.html",
-    "default_title": "닉네임 설정"
-  }
+    "default_title": "VOD 필터 설정"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["Sortable.min.js"],
+      "matches": ["<all_urls>"]
+    }
+  ]
 }

@@ -3,19 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Allowed Nicknames</title>
-  <style>
-    body { font-family: Arial, sans-serif; padding: 10px; }
-    ul { list-style: none; padding: 0; }
-    li { margin-bottom: 5px; }
-    button { margin-left: 5px; }
-  </style>
+  <title>VOD 필터</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <h1>허용된 닉네임</h1>
-  <ul id="nicknames"></ul>
-  <input type="text" id="newNickname" placeholder="새 닉네임">
-  <button id="addNickname">추가</button>
+  <div class="container">
+    <section class="streamer-nickname-section">
+      <h1>스트리머 닉네임 필터</h1>
+      <div class="nickname-input">
+        <input type="text" id="newNickname" placeholder="새 스트리머 닉네임">
+        <button id="addNickname">추가</button>
+      </div>
+      <ul id="nicknames" class="nickname-list"></ul>
+      <label class="toggle">
+        <input type="checkbox" id="nicknameFilterToggle">
+        <span class="slider"></span>
+        <span class="label">스트리머 닉네임 필터 적용</span>
+      </label>
+    </section>
+
+    <section class="keyword-section">
+      <h2>키워드 필터</h2>
+      <div class="keyword-inputs">
+        <div class="keyword-group">
+          <label for="requiredKeywords">필수 키워드:</label>
+          <div id="requiredKeywordTags" class="tag-container"></div>
+          <input type="text" id="requiredKeywords" placeholder="키워드 입력 후 Enter">
+        </div>
+        <div class="keyword-group">
+          <label for="optionalKeywords">선택적 키워드:</label>
+          <div id="optionalKeywordTags" class="tag-container"></div>
+          <input type="text" id="optionalKeywords" placeholder="키워드 입력 후 Enter">
+        </div>
+        <div class="keyword-group">
+          <label for="excludedKeywords">제외 키워드:</label>
+          <div id="excludedKeywordTags" class="tag-container"></div>
+          <input type="text" id="excludedKeywords" placeholder="키워드 입력 후 Enter">
+        </div>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="keywordFilterToggle">
+        <span class="slider"></span>
+        <span class="label">키워드 필터 적용</span>
+      </label>
+    </section>
+
+    <div class="settings-controls">
+      <div class="save-settings">
+        <input type="text" id="settingName" placeholder="설정 이름">
+        <button id="saveSettings">설정 저장</button>
+      </div>
+      <div class="load-settings">
+        <select id="savedSettings" aria-label="저장된 설정 목록">
+          <option value="">저장된 설정 선택</option>
+        </select>
+        <button id="loadSettings">설정 불러오기</button>
+        <button id="deleteSettings">설정 삭제</button>
+      </div>
+      <button id="resetSettings">초기화</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast"></div>
+
+  <script src="Sortable.min.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>
